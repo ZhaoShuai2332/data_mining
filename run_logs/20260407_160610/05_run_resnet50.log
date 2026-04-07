@@ -1,0 +1,21 @@
+Default port 5000 is busy. Switched to PORT=15000
+Default bit length for compilation: 63
+Default security parameter for compilation: 40
+Compiling file Programs/Source/resnet50_mnist_infer.mpc
+Writing to Programs/Schedules/resnet50_mnist_infer.sch
+Writing to Programs/Bytecode/resnet50_mnist_infer-0.bc
+Hash: 8219d2efc4a6305eabe41783cf1279508c699599af67b03bdefdaefe5a7ccbe6
+Program requires at most:
+           1 integer opens
+           1 virtual machine rounds
+Trying to run 64-bit computation
+Predicted label (skeleton placeholder): 0
+The following benchmarks are including preprocessing (offline phase).
+Time = 0.000494 seconds 
+Data sent = 8e-06 MB in ~2 rounds (party 0 only; use '-v' for more details)
+Global data sent = 1.6e-05 MB (all parties)
+Trying to run 64-bit computation
+The following benchmarks are including preprocessing (offline phase).
+Time = 0.000471 seconds 
+Data sent = 8e-06 MB in ~2 rounds (party 1 only; use '-v' for more details)
+Global data sent = 1.6e-05 MB (all parties)

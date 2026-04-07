@@ -1,0 +1,44 @@
+Default port 5000 is busy. Switched to PORT=15000
+Default bit length for compilation: 63
+Default security parameter for compilation: 40
+Compiling file Programs/Source/fc2_mnist_infer.mpc
+WARNING: Using tight parameters. Increase ring size or reduce fixed-point precision for increased efficiency
+WARNING: Order of memory instructions not preserved, errors possible
+WARNING: Probabilistic truncation leaks some information, see https://eprint.iacr.org/2024/1127 for discussion. Use 'sfix.round_nearest = True' to deactivate this for fixed-point operations.
+Writing to Programs/Bytecode/fc2_mnist_infer-TruncPr(1)_64_32-1.bc
+Writing to Programs/Bytecode/fc2_mnist_infer-LTZ(1)_33-3.bc
+Writing to Programs/Schedules/fc2_mnist_infer.sch
+Writing to Programs/Bytecode/fc2_mnist_infer-0.bc
+Hash: d281783eaf50a43ab82eddd98db45c35734cd1b76983420302e4eb1ce368bdde
+Program requires at most:
+      101770 integer inputs from player 0
+         784 integer inputs from player 1
+      101770 integer opens
+     6508969 integer bits
+     5902748 integer triples
+     5902748 integer simple multiplications
+      814396 virtual machine rounds
+Trying to run 64-bit computation
+Fatal error at fc2_mnist_infer-0:3 (INPUTMIXED): not enough inputs in Player-Data/Input-P0-0
+Trying to run 64-bit computation
+Fatal error at fc2_mnist_infer-0:92 (INPUTMIXED): not enough inputs in Player-Data/Input-P1-0
+Detected flat input layout in this MP-SPDZ build, retrying with flat files.
+Trying to run 64-bit computation
+Predicted label: 9
+The following benchmarks are including preprocessing (offline phase).
+Time = 63.9386 seconds 
+Data sent = 9238.53 MB in ~1438146 rounds (party 0 only; use '-v' for more details)
+Global data sent = 18532.5 MB (all parties)
+This program might benefit from some protocol options.
+Consider adding the following at the beginning of your code:
+	program.use_trunc_pr = True
+	program.use_split(2)
+Trying to run 64-bit computation
+The following benchmarks are including preprocessing (offline phase).
+Time = 63.9384 seconds 
+Data sent = 9293.94 MB in ~1438146 rounds (party 1 only; use '-v' for more details)
+Global data sent = 18532.5 MB (all parties)
+This program might benefit from some protocol options.
+Consider adding the following at the beginning of your code:
+	program.use_trunc_pr = True
+	program.use_split(2)

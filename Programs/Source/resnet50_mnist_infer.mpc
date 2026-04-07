@@ -1,0 +1,26 @@
+# ResNet-50 private inference skeleton for MP-SPDZ.
+# This file is an extension scaffold, not a fully validated end-to-end program.
+# It is intentionally modular so you can extend it block by block.
+
+from Compiler.types import sfix, sint
+from Compiler.library import for_range
+
+sfix.set_precision(32, 32)
+
+# Possible local-version note:
+# Some MP-SPDZ releases provide higher-level ml layers for conv/relu.
+# This skeleton uses explicit loops because assignment emphasizes core secure
+# multiplication and secure ReLU logic.
+
+
+def relu_scalar(x):
+    return x * (x > 0)
+
+
+# Placeholder. A complete ResNet-50 implementation should:
+# 1. Read folded conv/fc parameters from party 0 in export order.
+# 2. Read resized 224x224 MNIST image from party 1.
+# 3. Implement conv, residual add, pooling, final FC, and argmax.
+# 4. Reveal only predicted label.
+
+print_ln('Predicted label (skeleton placeholder): %s', sint(0).reveal())

@@ -1,0 +1,59 @@
+# Two-party semi-honest private inference for a 2-layer FC MNIST network.
+# Party 0: model owner inputs weights/biases.
+# Party 1: client inputs one flattened MNIST test image.
+# Output: predicted label only.
+
+from Compiler.types import sfix, sint
+from Compiler.library import for_range
+
+# May need local version tuning depending on your MP-SPDZ release.
+sfix.set_precision(32, 32)
+
+n_in = 28 * 28
+n_hidden = 128
+n_out = 10
+
+W1 = sfix.Array(n_in * n_hidden)
+W1.input_from(0)
+b1 = sfix.Array(n_hidden)
+b1.input_from(0)
+W2 = sfix.Array(n_hidden * n_out)
+W2.input_from(0)
+b2 = sfix.Array(n_out)
+b2.input_from(0)
+
+x = sfix.Array(n_in)
+x.input_from(1)
+
+z1 = sfix.Array(n_hidden)
+
+@for_range(n_hidden)
+def _(j):
+    acc = sfix(0)
+    @for_range(n_in)
+    def _(i):
+        acc.update(acc + x[i] * W1[i * n_hidden + j])
+    acc.update(acc + b1[j])
+    z1[j] = acc * (acc > 0)
+
+logits = sfix.Array(n_out)
+
+@for_range(n_out)
+def _(k):
+    acc = sfix(0)
+    @for_range(n_hidden)
+    def _(j):
+        acc.update(acc + z1[j] * W2[j * n_out + k])
+    acc.update(acc + b2[k])
+    logits[k] = acc
+
+best_val = logits[0]
+best_idx = sint(0)
+
+@for_range(1, n_out)
+def _(k):
+    better = logits[k] > best_val
+    best_val.update(better.if_else(logits[k], best_val))
+    best_idx.update(better.if_else(sint(k), best_idx))
+
+print_ln('Predicted label: %s', best_idx.reveal())

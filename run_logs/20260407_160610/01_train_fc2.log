@@ -1,0 +1,6 @@
+Epoch 1/5 loss=0.2986 test_acc=95.25%
+Epoch 2/5 loss=0.1324 test_acc=96.61%
+Epoch 3/5 loss=0.0911 test_acc=97.43%
+Epoch 4/5 loss=0.0683 test_acc=97.48%
+Epoch 5/5 loss=0.0556 test_acc=97.73%
+Exported to models/fc2

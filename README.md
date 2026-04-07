@@ -1,0 +1,163 @@
+# 隐私保护神经网络推理实验工程
+
+本项目是《大数据隐私保护课程》实践作业 **3.3 节实验 A** 的完整工程实现。目标是基于 **MP‑SPDZ** 框架在两方半诚实模型下实现私有神经网络推理，并在 MNIST 数据集上完成实验和性能评估。
+
+## 目录结构
+
+```text
+.
+├── train_export_fc2_mnist.py      # 训练并导出两层全连接网络
+├── train_export_resnet50_mnist.py # 训练并导出 MNIST 版 ResNet‑50
+├── fold_bn.py                     # 将 BatchNorm 融合进卷积层
+├── export_fixed.py                # 将模型参数转为固定点格式
+├── prepare_input.py               # 将 MNIST 测试样本转为 MP‑SPDZ 输入格式
+├── Programs
+│   └── Source
+│       ├── fc2_mnist_infer.mpc    # 两层 FC 模型的 MPC 推理程序
+│       └── resnet50_mnist_infer.mpc # ResNet‑50 推理骨架（示例）
+├── run_fc2.sh                     # 编译并运行两层 FC 私有推理
+├── run_resnet50.sh                # 编译并运行 ResNet‑50 私有推理
+├── report_notes.md                # 实验原理与结果分析模板
+└── README.md                      # 项目说明（当前文件）
+```
+
+此外，训练脚本将生成如下输出目录（需手动创建）：
+
+```
+models/
+  ├── fc2/
+  │   ├── fc2_model.pth   # PyTorch 状态字典
+  │   └── fc2_params.npz  # NumPy 权重与偏置（W1,b1,W2,b2）
+  └── resnet50/
+      └── resnet50_model.pth # 未折叠 BN 的 ResNet‑50 状态字典
+```
+
+使用 `fold_bn.py` 会生成 `resnet50_fused.pth`；使用 `export_fixed.py` 和 `prepare_input.py` 会在 `mp_spdz_inputs/` 下生成用于 MPC 推理的固定点权重和输入文件。
+
+## 环境要求
+
+1. **Python**：建议版本 ≥3.8。
+2. **PyTorch**：用于训练模型。安装方法：
+
+   ```bash
+   pip install torch torchvision
+   ```
+
+3. **MP‑SPDZ**：隐私计算框架。需手动克隆并编译。基本步骤如下（假设在项目根目录外）：
+
+   ```bash
+   git clone https://github.com/data61/MP-SPDZ.git
+   cd MP-SPDZ
+   # 编译 semi2k 二方半诚实协议
+   make semi2k-party.x
+   ```
+
+   编译完成后，将 `MP-SPDZ` 目录路径配置到脚本的 `MP_SPDZ_DIR` 环境变量，或使用脚本默认路径 `../MP-SPDZ`（相对于本项目根目录）。
+
+## 快速上手
+
+以下步骤演示如何从训练到 MPC 推理全流程（以两层全连接网络为例）：
+
+### 1. 训练并导出模型
+
+```bash
+# 训练两层 FC 网络（可调整 epochs 和 hidden 大小）
+python3 train_export_fc2_mnist.py --epochs 5 --hidden 128 --outdir models/fc2
+
+# 训练 MNIST 版 ResNet‑50（可降低 epochs 或启用 --freeze_base 以节省时间）
+python3 train_export_resnet50_mnist.py --epochs 3 --outdir models/resnet50
+
+# 训练结束后，在 models/fc2 下会有 fc2_model.pth 和 fc2_params.npz；
+# 在 models/resnet50 下会有 resnet50_model.pth。
+```
+
+### 2. BatchNorm 融合（仅针对 ResNet‑50）
+
+```bash
+python3 fold_bn.py \
+    --input models/resnet50/resnet50_model.pth \
+    --output models/resnet50/resnet50_fused.pth
+```
+
+该步骤将所有 BatchNorm 参数吸收到卷积权重与偏置中，避免推理时进行除法和开方运算。
+
+### 3. 导出固定点模型
+
+将模型参数转换为固定点整数，以便在 MP‑SPDZ 中输入。通过选择合适的 fractional_bits 可以在精度和通信开销之间权衡。
+
+```bash
+# 导出两层 FC 模型，使用 16 位小数
+python3 export_fixed.py --arch fc2 \
+    --npz models/fc2/fc2_params.npz \
+    --outdir mp_spdz_inputs/fc2 \
+    --fractional_bits 16
+
+# 导出 ResNet‑50 模型，先运行 fold_bn.py，再导出
+python3 export_fixed.py --arch resnet50 \
+    --pth models/resnet50/resnet50_fused.pth \
+    --outdir mp_spdz_inputs/resnet50 \
+    --fractional_bits 20
+```
+
+导出后，每个 outdir 下将生成：
+
+- `fixed_params.txt`：按顺序排列的固定点整数，供 Party 0 输入；
+- `meta.json`：记录每个参数的形状、顺序以及使用的 fractional_bits。
+
+### 4. 准备客户端输入
+
+将待推理的 MNIST 测试样本转换为固定点整数。对于 ResNet‑50，需要将输入重新缩放至 224×224。
+
+```bash
+# 准备第 0 张测试图片（原 28×28），用于两层 FC 网络
+python3 prepare_input.py --index 0 --fractional_bits 16 \
+    --outfile mp_spdz_inputs/fc2/input_0.txt
+
+# 准备第 0 张测试图片（resize 到 224×224），用于 ResNet‑50
+python3 prepare_input.py --index 0 --fractional_bits 20 \
+    --resize224 --outfile mp_spdz_inputs/resnet50/input_0.txt
+```
+
+### 5. 编译并运行 MPC 推理
+
+确保 MP‑SPDZ 已经编译 `semi2k-party.x`。然后运行以下脚本，在两方上执行推理：
+
+```bash
+# 运行两层 FC 推理（需要提前设置 MODEL_DIR 和 INPUT_FILE 环境变量）
+MODEL_DIR=mp_spdz_inputs/fc2 \
+INPUT_FILE=mp_spdz_inputs/fc2/input_0.txt \
+MP_SPDZ_DIR=../MP-SPDZ \
+./run_fc2.sh
+
+# 运行 ResNet‑50 推理（当前 resnet50_mnist_infer.mpc 为骨架示例）
+MODEL_DIR=mp_spdz_inputs/resnet50 \
+INPUT_FILE=mp_spdz_inputs/resnet50/input_0.txt \
+MP_SPDZ_DIR=../MP-SPDZ \
+./run_resnet50.sh
+```
+
+脚本会将权重和输入复制到 `Player-Data` 目录下的相应位置，自动编译 MPC 程序并启动两方计算。完成后，会在终端输出预测标签。对于 ResNet‑50，由于 `resnet50_mnist_infer.mpc` 仅为骨架，预测值为占位符。
+
+### 6. 记录时间和通信开销
+
+MP‑SPDZ 提供若干运行时选项用于输出时间和通信统计。例如，可以在执行时添加 `-S` 输出通信量，或在 `compile.py` 阶段使用 `--bits` 调整精度。也可以通过观察 `semi2k-party.x` 的终端输出获取运行时间。为了获得更精确的测量，可以在运行脚本前后使用 `time` 命令，或修改 MP‑SPDZ 源码中的统计选项。
+
+## baseline 与 ResNet‑50 的区别
+
+| 项目             | baseline 两层 FC             | ResNet‑50 扩展                       |
+|------------------|--------------------------------|--------------------------------------|
+| 模型规模         | 输入 784 → 隐藏 128 → 输出 10 | 深层卷积网络，含 50 层、残差连接       |
+| 实现复杂度       | 简单矩阵乘法 + ReLU           | 需要实现卷积、残差、全局平均池化等     |
+| BN 处理          | 不含 BN                       | 推理前需要 BN folding 以减少计算       |
+| 通信/计算开销    | 较低                           | 较高，随网络深度和输入尺寸增加         |
+| 完整示例         | 已完整实现                    | 提供骨架，需按层扩展并调试             |
+
+## 可能需要手动调整的部分
+
+- MP‑SPDZ 版本的 API 可能因提交时间不同略有差异。如果在导入数据或运算时出现错误，可以查阅 [MP‑SPDZ 文档](https://mp-spdz.readthedocs.io/en/latest/) 或示例程序，适当修改 `.mpc` 文件中的输入和运算方式。
+- 在 `fc2_mnist_infer.mpc` 中假定模型参数和输入均使用相同的小数位 `fractional_bits`。如果更改精度，请确保在导出模型和准备输入时一致，并在 `.mpc` 文件中使用 `sfix.set_precision(k, f)` 设置相应的整数和小数位长度。
+- `resnet50_mnist_infer.mpc` 目前仅为结构示例，未实现完整前向过程。实现时可参考 PyTorch `torchvision.models.resnet50` 的定义，逐层加载参数并调用自定义的 `conv2d_single`、`relu_matrix` 等函数。
+
+## 结语
+
+通过本工程，你可以体验如何将经典深度学习模型部署到安全多方计算平台，实现私有推理。建议先从 baseline 两层全连接网络开始，确保完整流程可通，再尝试扩展到更复杂的 ResNet‑50，并探索不同精度设置对通信开销和推理时间的影响。
