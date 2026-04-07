@@ -1,0 +1,15 @@
+=== First attempt (directory layout) ===
+Trying to run 64-bit computation
+Fatal error at resnet50_mnist_infer-0:54 (INPUTMIXED): not enough inputs in Player-Data/Input-P0-0
+
+=== Second attempt (flat-file layout) ===
+Trying to run 64-bit computation
+Predicted label: 3
+Significant amount of unused dabits of Z2^64 distorting the benchmark. For more accurate benchmarks, consider reducing the batch size with --batch-size.
+The following benchmarks are including preprocessing (offline phase).
+Time = 18168.7 seconds 
+Data sent = 9.12316e+06 MB in ~13668776 rounds (party 0 only; rounds counted double due to multi-threading; use '-v' for more details)
+Global data sent = 1.82571e+07 MB (all parties)
+This program might benefit from some protocol options.
+Consider adding the following at the beginning of your code:
+	program.use_split(2)

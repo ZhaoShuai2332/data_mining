@@ -11,6 +11,8 @@ from Compiler.library import for_range
 # API order is set_precision(fractional_bits, total_bits).
 sfix.set_precision(16, 48)
 program.use_trunc_pr = True
+# Use multi-threaded layer kernels to avoid single-core bottlenecks.
+ml.set_n_threads(4)
 
 BATCH = 1
 N_CLASS = 10

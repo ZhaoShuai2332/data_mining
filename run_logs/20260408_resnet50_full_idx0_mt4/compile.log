@@ -1,0 +1,329 @@
+Default bit length for compilation: 63
+Default security parameter for compilation: 40
+Compiling file Programs/Source/resnet50_mnist_infer.mpc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-2.bc
+WARNING: Probabilistic truncation leaks some information, see https://eprint.iacr.org/2024/1127 for discussion. Use 'sfix.round_nearest = True' to deactivate this for fixed-point operations.
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(1000)_64_16-4.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(704)_64_16-6.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-3.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-1.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(1000)_49-9.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(704)_49-11.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-8.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-7.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(48)_49-14.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(24)_49-15.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(12)_49-16.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(32)_49-17.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(16)_49-18.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(8)_49-19.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-13.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-MaxPool-_forward-12.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-21.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(176)_64_16-23.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-22.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-20.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(176)_49-26.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-25.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-24.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-28.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-29.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-27.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-31.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-30.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-33.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-34.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-32.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-36.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-37.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-35.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-39.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-38.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-41.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-40.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-43.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-44.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-42.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-46.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-45.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-48.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-49.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-47.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-51.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-50.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-53.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-54.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-52.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-56.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-55.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-58.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-57.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-60.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-59.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-62.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-63.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-61.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-65.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-64.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-67.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-68.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-66.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-70.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-69.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-72.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-71.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-74.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(352)_64_16-76.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-75.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-73.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(352)_49-79.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-78.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-77.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-81.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(88)_64_16-83.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-82.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-80.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(88)_49-86.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-85.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-84.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-88.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-89.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-87.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-91.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-92.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-90.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-94.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-93.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-96.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-95.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-98.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-99.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-97.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-101.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-100.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-103.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-104.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-102.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-106.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-105.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-108.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-109.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-107.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-111.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-110.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-113.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-112.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-115.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-114.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-117.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-118.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-116.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-120.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-119.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-122.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-123.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-121.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-125.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-124.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-127.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-126.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-129.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-128.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-131.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-132.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-130.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-134.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-133.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-136.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-137.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-135.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-139.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-138.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-141.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-140.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-143.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-144.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-142.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-146.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-145.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-148.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(544)_64_16-150.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-149.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-147.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(544)_49-153.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-152.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-151.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-155.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-156.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-154.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-158.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-159.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-157.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-161.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-160.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-163.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-162.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-165.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-166.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-164.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-168.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-167.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-170.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-171.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-169.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-173.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-172.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-175.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-176.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-174.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-178.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-177.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-180.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-179.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-182.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-181.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-184.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-185.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-183.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-187.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-186.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-189.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-190.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-188.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-192.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-191.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-194.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-193.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-196.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-195.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-198.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-199.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-197.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-201.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-200.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-203.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-204.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-202.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-206.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-205.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-208.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-207.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-210.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-209.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-212.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-213.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-211.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-215.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-214.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-217.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-218.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-216.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-220.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-219.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-222.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-221.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-224.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-223.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-226.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-227.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-225.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-229.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-228.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-231.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-232.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-230.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-234.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-233.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-236.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-235.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-238.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-239.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-237.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-241.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-240.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-243.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(272)_64_16-245.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-244.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-242.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(272)_49-248.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-247.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-246.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-250.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-251.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-249.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-253.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-254.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-252.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-256.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-255.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-258.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-257.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-260.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-261.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-259.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-263.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-262.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-265.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-266.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-264.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-268.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-267.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-270.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-271.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-269.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-273.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-272.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-275.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-274.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-277.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-276.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-279.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-280.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-278.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-282.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-281.bc
+Compiled 100000 lines at Wed Apr  8 00:26:39 2026
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-284.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-285.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixConv2d-forward-283.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-287.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Add-forward-286.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-289.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Relu-forward-288.bc
+WARNING: Using tight parameters. Increase ring size or reduce fixed-point precision for increased efficiency
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(1)_64_16-292.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-multithread-291.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-FixAveragePool2d-forward-290.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-TruncPr(10)_64_16-294.bc
+Writing to Programs/Bytecode/resnet50_mnist_infer-Dense-forward-293.bc
+WARNING: Order of memory instructions not preserved, errors possible
+Writing to Programs/Bytecode/resnet50_mnist_infer-LTZ(1)_49-295.bc
+Writing to Programs/Schedules/resnet50_mnist_infer.sch
+Writing to Programs/Bytecode/resnet50_mnist_infer-0.bc
+Hash: e05e7b8f2d7e36cf2a88a64d7d7d0441e0cf945dd8598d27dd51f6ffab975c41
+Program requires at most:
+       50176 integer inputs from player 1
+    23495690 integer inputs from player 0
+  5995983523 integer triples
+          64 matrix multiplications (1x49 * 49x12544)
+    11113994 integer dot products
+  1260929593 integer bits
+    22330388 integer opens
+  1987502755 integer simple multiplications
+        1088 matrix multiplications (1x64 * 64x3136)
+         192 matrix multiplications (1x576 * 576x3136)
+         256 matrix multiplications (1x256 * 256x3136)
+         512 matrix multiplications (1x1152 * 1152x784)
+        2048 matrix multiplications (1x128 * 128x784)
+         512 matrix multiplications (1x256 * 256x784)
+         640 matrix multiplications (1x512 * 512x784)
+        1536 matrix multiplications (1x2304 * 2304x196)
+        6144 matrix multiplications (1x256 * 256x196)
+        1024 matrix multiplications (1x512 * 512x196)
+        1792 matrix multiplications (1x1024 * 1024x196)
+        1536 matrix multiplications (1x4608 * 4608x49)
+        6144 matrix multiplications (1x512 * 512x49)
+        2048 matrix multiplications (1x1024 * 1024x49)
+        1024 matrix multiplications (1x2048 * 2048x49)
+           1 matrix multiplications (1x2048 * 2048x10)
+      924525 virtual machine rounds

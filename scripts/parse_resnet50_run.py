@@ -115,15 +115,16 @@ def main() -> None:
     if total_sent_mb is None and party0_sent_mb is not None and party1_sent_mb is not None:
         total_sent_mb = party0_sent_mb + party1_sent_mb
 
+    # Prefer runtime rounds from party logs; fall back to compile-time VM rounds.
     rounds = parse_numeric(
-        compile_text,
-        r"([0-9]+)\s+virtual machine rounds",
+        combined_party,
+        r"in\s*~?\s*([0-9]+)\s+rounds",
         int,
     )
     if rounds is None:
         rounds = parse_numeric(
-            combined_party,
-            r"in\s*~?\s*([0-9]+)\s+rounds",
+            compile_text,
+            r"([0-9]+)\s+virtual machine rounds",
             int,
         )
 

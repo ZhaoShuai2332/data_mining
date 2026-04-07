@@ -1,0 +1,2 @@
+program,sample_index,true_label,predicted_label,is_correct,fractional_bits,elapsed_time_seconds,party0_sent_mb,party1_sent_mb,total_sent_mb,rounds,triples,run_dir,compile_log,party0_log,party1_log,generated_at_utc
+resnet50_mnist_infer,0,7,3,False,16,18168.7,9123160.0,9133890.0,18257100.0,13668776,5995983523,run_logs/20260408_resnet50_full_idx0_mt4,run_logs/20260408_resnet50_full_idx0_mt4/compile.log,run_logs/20260408_resnet50_full_idx0_mt4/party0.log,run_logs/20260408_resnet50_full_idx0_mt4/party1.log,2026-04-07T23:48:07.087578+00:00

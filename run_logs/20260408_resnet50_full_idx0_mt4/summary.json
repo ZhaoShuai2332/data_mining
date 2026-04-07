@@ -1,0 +1,19 @@
+{
+  "program": "resnet50_mnist_infer",
+  "sample_index": 0,
+  "true_label": 7,
+  "predicted_label": 3,
+  "is_correct": false,
+  "fractional_bits": 16,
+  "elapsed_time_seconds": 18168.7,
+  "party0_sent_mb": 9123160.0,
+  "party1_sent_mb": 9133890.0,
+  "total_sent_mb": 18257100.0,
+  "rounds": 13668776,
+  "triples": 5995983523,
+  "run_dir": "run_logs/20260408_resnet50_full_idx0_mt4",
+  "compile_log": "run_logs/20260408_resnet50_full_idx0_mt4/compile.log",
+  "party0_log": "run_logs/20260408_resnet50_full_idx0_mt4/party0.log",
+  "party1_log": "run_logs/20260408_resnet50_full_idx0_mt4/party1.log",
+  "generated_at_utc": "2026-04-07T23:48:07.087578+00:00"
+}
