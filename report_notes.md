@@ -40,8 +40,8 @@ tmp = x * (x > 0)
 ### 两方私有推理流程
 
 1. **模型训练**：在普通环境下使用 PyTorch 训练模型（基线 FC 或 ResNet‑50）。
-2. **导出权重**：将训练所得权重与偏置保存，并通过 `export_fixed.py` 按指定小数位数转换为固定点整数。
-3. **输入准备**：客户端将测试样本同样按相同小数位数转换为整数格式。
+2. **导出权重**：将训练所得权重与偏置保存，并通过 `export_fixed.py` 按指定小数位数量化后导出为 `sfix.input_from()` 可读取的实数文本。
+3. **输入准备**：客户端将测试样本同样按相同小数位数量化并导出为实数文本输入。
 4. **编译 MPC 程序**：使用 MP‑SPDZ 的 `compile.py` 编译 `.mpc` 程序，生成相应字节码。
 5. **执行协议**：两方分别运行 `semi2k-party.x`（或其他协议实现），将模型参数和输入写入 `Player-Data/Input-PX-Y`。协议执行完毕后，双方同时获得模型输出（预测结果）。
 
@@ -96,59 +96,80 @@ tmp = x * (x > 0)
 2. 编写嵌套循环实现多通道卷积、残差加法和全局平均池化等操作。
 3. 考虑使用 `for_range_opt` 或多线程编译接口优化循环，减少通信开销。
 
-## 运行结果记录（2026-04-07 实测）
+## 运行结果记录（2026-04-07 实测，基于真实运行）
 
 ### 本次运行日志与环境
 
 1. 代码目录：`/Users/shuaizhao/workspace/mp_spdz_mnist_project`
 2. MP-SPDZ 目录：`/Users/shuaizhao/workspace/mp-spdz-0.4.2`
-3. 终端日志目录：`run_logs/20260407_160610/`
-4. 关键日志文件：
-   - `01_train_fc2.log`
-   - `04_run_fc2.log`
-   - `05_run_resnet50.log`
+3. 协议可执行文件：`/Users/shuaizhao/workspace/mp-spdz-0.4.2/semi2k-party.x`
+4. baseline FC2 参数与元数据：
+   - `models/fc2/fc2_params.npz`
+   - `mp_spdz_inputs/fc2/fixed_params.txt`
+   - `mp_spdz_inputs/fc2/meta.json`
 
-### baseline (FC2) 结果
+### baseline (FC2) 单样本链路检查
 
-训练阶段（`train_export_fc2_mnist.py --epochs 5 --hidden 128`）最终指标：
+使用 `prepare_input.py` + `run_fc2.sh` 对 `index=0` 进行环境核验，结果目录：
 
-- Epoch 5: `loss=0.0556`, `test_acc=97.73%`
+- `run_logs/20260407_envcheck_single/`
 
-MPC 推理阶段（样本 `index=0`，导出精度 `fractional_bits=16`）：
+关键结果：
 
-| 测试样本索引 | 真实标签 | 预测标签 | 准确/错误 | 总通信量 (bytes) | 运行时间 (s) |
-|-------------:|---------:|---------:|---------:|----------------:|-------------:|
-| 0            | 7        | 0        | 错误      | 475,691,581 (≈453.655 MB) | 7.9961 |
+- predicted_label: `7`
+- elapsed_time_seconds: `5.87248`
+- party0_sent_mb: `211.931`
+- party1_sent_mb: `254.427`
+- total_sent_mb: `466.358`
+- rounds: `306236`
+- triples: `109724`
 
-补充说明（来自 MP-SPDZ 运行日志）：
+### baseline (FC2) 批量评估结果
 
-1. Party 0 发送：`205.622 MB`
-2. Party 1 发送：`248.032 MB`
-3. 虚拟机轮数：`~306,099 rounds`
-4. 三元组消耗：`105,477 integer triples`
-5. 运行脚本会自动落盘：`run_logs/<timestamp>/compile.log|party0.log|party1.log|summary.json|summary.csv`
+#### 批量实验 A（前 10 个样本）
 
-### ResNet‑50 结果（当前为骨架程序）
+- 输出目录：`eval_results/20260407_batch_n10/`
+- 汇总文件：
+  - `eval_results/20260407_batch_n10/summary.json`
+  - `eval_results/20260407_batch_n10/results.csv`
 
-当前 `resnet50_mnist_infer.mpc` 为骨架，占位输出不代表真实模型准确率。
+汇总指标：
 
-| 测试样本索引 | 真实标签 | 预测标签 | 准确/错误 | 总通信量 (bytes) | 运行时间 (s) |
-|-------------:|---------:|---------:|---------:|----------------:|-------------:|
-| 0            | 7        | 0        | 错误（骨架占位） | 17 (≈1.6e-05 MB) | 0.000494 |
+- sample_count: `10`
+- accuracy: `0.9`
+- avg_time_seconds: `5.874504`
+- avg_total_sent_mb: `466.358`
 
-## 时间与通信开销分析（基于实测）
+#### 批量实验 B（前 20 个样本）
 
-1. **FC2 在 MPC 下仍有明显开销，但已可控**：单样本推理总通信约 `453.655 MB`，耗时约 `8 s`。日志显示主开销仍来自安全乘法与比较（约 `105,477` triples、`306,099` 轮）。
-2. **固定点精度已统一并具备脚本校验**：baseline FC2 当前统一为 16 位小数（`config/fc2_config.json`、`export_fixed.py`、`prepare_input.py`、`fc2_mnist_infer.mpc` 一致），`run_fc2.sh` 会在运行前检查 `meta.json` 的 `fractional_bits` 是否匹配，不匹配则报错退出。
-3. **ResNet‑50 当前结果仅证明执行链路可跑通**：由于程序为骨架，当前通信和时间数据不具备与 FC2 的可比性。
-4. **运行稳定性问题已识别**：本机 `5000` 端口被系统进程占用，且 MP-SPDZ 输入文件布局与脚本初始假设不同。脚本已改为自动端口回退和输入布局自适应，链路可复现。
-5. **下一步优化方向**：
-   - 按日志建议启用 `program.use_trunc_pr = True` 和 `program.use_split(2)`，尝试降低运行时。
-   - 运行 `scripts/eval_fc2_mpc.py` 对多个测试样本批量评估，给出 MPC 侧真实准确率与均值开销。
+- 输出目录：`eval_results/20260407_batch_n20/`
+- 汇总文件：
+  - `eval_results/20260407_batch_n20/summary.json`
+  - `eval_results/20260407_batch_n20/results.csv`
+
+汇总指标：
+
+- sample_count: `20`
+- accuracy: `0.95`
+- avg_time_seconds: `5.82932`
+- avg_total_sent_mb: `466.358`
+
+两组批量评估均出现同一错分样本（`index=8`，真实标签 `5`，预测 `6`）。
+
+### ResNet‑50 结果状态（诚实边界说明）
+
+当前 `Programs/Source/resnet50_mnist_infer.mpc` 仍为骨架程序，尚未完成完整私有前向推理实现。因此本次报告不提供 ResNet‑50 的正式准确率、平均时间和通信量实验结果，避免将占位输出误写为实验结论。
+
+## 时间与通信开销分析（基于本次 FC2 实测）
+
+1. **FC2 批量结果已闭环可复现**：通过 `scripts/eval_fc2_mpc.py` 可稳定生成 `results.csv` 与 `summary.json`，并得到可直接写入报告的 accuracy/平均耗时/平均通信量。
+2. **通信量稳定**：在本次环境下，单样本总通信量基本稳定在 `466.358 MB`（party0=`211.931 MB`，party1=`254.427 MB`）。
+3. **运行时间稳定在秒级**：前 10/20 样本的平均耗时分别为 `5.874504 s` 和 `5.82932 s`，满足基线实验可重复测量要求。
+4. **固定点配置一致性有效**：`config/fc2_config.json` 与 `meta.json` 的 `fractional_bits=16` 一致，`run_fc2.sh` 具备运行前校验。
 
 ## 实验总结
 
-本次实验已完整跑通了从训练、参数导出、输入准备到两方 MPC 推理的 baseline 闭环，并获得了可复现实验日志。结果显示，私有推理链路可执行，且固定点精度配置已实现统一与自动校验；在此基础上可继续通过批量评估统计 MPC 侧准确率与平均开销。ResNet‑50 部分目前主要验证了编译与执行流程，后续需要补全前向计算后再进行准确率与开销评估。
+本次已真实完成 baseline FC2 的单样本链路验证与两组批量评估（`n=10`、`n=20`），并沉淀了可直接引用的结果文件（`summary.json`、`results.csv`）。因此，FC2 部分的“准确率、时间、通信量”实验结果已补全。ResNet‑50 仍处于骨架阶段，尚未完成正式实验结果。
 
 ---
 

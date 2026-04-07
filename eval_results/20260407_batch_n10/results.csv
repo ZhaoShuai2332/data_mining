@@ -1,0 +1,11 @@
+index,true_label,predicted_label,is_correct,elapsed_time_seconds,total_sent_mb,run_dir
+0,7,7,True,5.94719,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00000
+1,2,2,True,5.80802,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00001
+2,1,1,True,5.86282,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00002
+3,0,0,True,5.88079,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00003
+4,4,4,True,5.89429,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00004
+5,1,1,True,6.01597,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00005
+6,4,4,True,5.85127,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00006
+7,9,9,True,5.79839,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00007
+8,5,6,False,5.85497,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00008
+9,9,9,True,5.83133,466.358,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_batch_n10/runs/sample_00009

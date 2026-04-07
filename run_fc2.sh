@@ -37,6 +37,12 @@ if [[ -z "${RUN_DIR:-}" ]]; then
   TIMESTAMP="$(date '+%Y%m%d_%H%M%S')"
   RUN_DIR="${RUN_ROOT}/${TIMESTAMP}"
 fi
+RUN_DIR="$(python3 - "${RUN_DIR}" <<'PY'
+import os
+import sys
+print(os.path.abspath(sys.argv[1]))
+PY
+)"
 mkdir -p "${RUN_DIR}"
 
 COMPILE_LOG="${RUN_DIR}/compile.log"
