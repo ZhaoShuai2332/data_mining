@@ -1,0 +1,19 @@
+{
+  "program": "resnet50_mnist_infer",
+  "sample_index": 0,
+  "true_label": 7,
+  "predicted_label": null,
+  "is_correct": null,
+  "fractional_bits": 16,
+  "elapsed_time_seconds": null,
+  "party0_sent_mb": null,
+  "party1_sent_mb": null,
+  "total_sent_mb": null,
+  "rounds": 922527,
+  "triples": 5995983523,
+  "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/run_logs/20260407_resnet50_timeout10_idx0",
+  "compile_log": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/run_logs/20260407_resnet50_timeout10_idx0/compile.log",
+  "party0_log": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/run_logs/20260407_resnet50_timeout10_idx0/party0.log",
+  "party1_log": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/run_logs/20260407_resnet50_timeout10_idx0/party1.log",
+  "generated_at_utc": "2026-04-07T15:31:55.235310+00:00"
+}

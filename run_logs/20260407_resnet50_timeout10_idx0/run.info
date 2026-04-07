@@ -1,0 +1,6 @@
+=== ResNet50 MPC Run ===
+run_dir=/Users/shuaizhao/workspace/mp_spdz_mnist_project/run_logs/20260407_resnet50_timeout10_idx0
+model_dir=/Users/shuaizhao/workspace/mp_spdz_mnist_project/mp_spdz_inputs/resnet50
+input_file=/Users/shuaizhao/workspace/mp_spdz_mnist_project/mp_spdz_inputs/resnet50/input_0.txt
+port=15000
+fractional_bits=16

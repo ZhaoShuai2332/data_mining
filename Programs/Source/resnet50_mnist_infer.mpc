@@ -1,26 +1,170 @@
-# ResNet-50 private inference skeleton for MP-SPDZ.
-# This file is an extension scaffold, not a fully validated end-to-end program.
-# It is intentionally modular so you can extend it block by block.
+# Two-party semi-honest private inference for full ResNet-50 on MNIST(224x224).
+# Party 0: model owner inputs all folded model parameters.
+# Party 1: client inputs one resized+normalized MNIST sample.
+# Output: predicted label only.
 
+from Compiler import ml
 from Compiler.types import sfix, sint
 from Compiler.library import for_range
 
-sfix.set_precision(32, 32)
+# Keep this aligned with export_fixed.py/prepare_input.py defaults.
+# API order is set_precision(fractional_bits, total_bits).
+sfix.set_precision(16, 48)
+program.use_trunc_pr = True
 
-# Possible local-version note:
-# Some MP-SPDZ releases provide higher-level ml layers for conv/relu.
-# This skeleton uses explicit loops because assignment emphasizes core secure
-# multiplication and secure ReLU logic.
+BATCH = 1
+N_CLASS = 10
 
 
 def relu_scalar(x):
     return x * (x > 0)
 
 
-# Placeholder. A complete ResNet-50 implementation should:
-# 1. Read folded conv/fc parameters from party 0 in export order.
-# 2. Read resized 224x224 MNIST image from party 1.
-# 3. Implement conv, residual add, pooling, final FC, and argmax.
-# 4. Reveal only predicted label.
+def argmax_index(values, length):
+    best_val = values[0]
+    best_idx = sint(0)
 
-print_ln('Predicted label (skeleton placeholder): %s', sint(0).reveal())
+    @for_range(1, length)
+    def _(k):
+        better = values[k] > best_val
+        best_val.update(better.if_else(values[k], best_val))
+        best_idx.update(better.if_else(sint(k), best_idx))
+
+    return best_idx
+
+
+def conv2d(input_layer, out_channels, kernel_size, stride=1, padding=0):
+    layer = ml.easyConv2d(
+        input_layer.shape,
+        BATCH,
+        out_channels,
+        kernel_size=kernel_size,
+        stride=stride,
+        padding=padding,
+        bias=True,
+    )
+    layer.inputs = [input_layer]
+    return layer
+
+
+def maxpool2d(input_layer, kernel_size, stride, padding):
+    layer = ml.easyMaxPool(
+        input_layer.shape,
+        kernel_size=kernel_size,
+        stride=stride,
+        padding=padding,
+    )
+    layer.inputs = [input_layer]
+    return layer
+
+
+def relu_tensor(input_layer):
+    layer = ml.Relu(input_layer.shape)
+    layer.inputs = [input_layer]
+    return layer
+
+
+def add_residual(main_layer, skip_layer):
+    return ml.Add([main_layer, skip_layer])
+
+
+def fc_forward(input_layer, in_dim, out_dim):
+    # Dense uses weight layout [in_dim, out_dim], aligned with export_fixed.py.
+    layer = ml.Dense(BATCH, in_dim, out_dim, d=1, activation='id')
+    layer.inputs = [input_layer]
+    return layer
+
+
+def bottleneck_block(input_layer, planes, stride, need_downsample):
+    layers = []
+
+    conv1 = conv2d(input_layer, planes, 1, stride=1, padding=0)
+    layers.append(conv1)
+    relu1 = relu_tensor(conv1)
+    layers.append(relu1)
+
+    conv2 = conv2d(relu1, planes, 3, stride=stride, padding=1)
+    layers.append(conv2)
+    relu2 = relu_tensor(conv2)
+    layers.append(relu2)
+
+    conv3 = conv2d(relu2, planes * 4, 1, stride=1, padding=0)
+    layers.append(conv3)
+
+    if need_downsample:
+        shortcut = conv2d(input_layer, planes * 4, 1, stride=stride, padding=0)
+        layers.append(shortcut)
+    else:
+        shortcut = input_layer
+
+    merged = add_residual(conv3, shortcut)
+    layers.append(merged)
+    out = relu_tensor(merged)
+    layers.append(out)
+
+    return out, layers
+
+
+def make_stage(input_layer, planes, blocks, first_stride):
+    stage_layers = []
+    output_channels = planes * 4
+    need_downsample = (input_layer.shape[3] != output_channels) or (first_stride != 1)
+
+    out, block_layers = bottleneck_block(input_layer, planes, first_stride, need_downsample)
+    stage_layers.extend(block_layers)
+
+    for _ in range(blocks - 1):
+        out, block_layers = bottleneck_block(out, planes, 1, False)
+        stage_layers.extend(block_layers)
+
+    return out, stage_layers
+
+
+# Input tensor layout: NHWC = [1, 224, 224, 1]
+input_shape = [BATCH, 224, 224, 1]
+
+# Stem
+stem_conv = ml.easyConv2d(input_shape, BATCH, 64, kernel_size=7, stride=2, padding=3, bias=True)
+stem_relu = relu_tensor(stem_conv)
+stem_pool = maxpool2d(stem_relu, kernel_size=3, stride=2, padding=1)
+
+layers = [stem_conv, stem_relu, stem_pool]
+current = stem_pool
+
+# ResNet-50 stages: [3, 4, 6, 3] bottleneck blocks.
+stage_cfg = [
+    (64, 3, 1),
+    (128, 4, 2),
+    (256, 6, 2),
+    (512, 3, 2),
+]
+for planes, blocks, stride in stage_cfg:
+    current, stage_layers = make_stage(current, planes, blocks, stride)
+    for layer in stage_layers:
+        layers.append(layer)
+
+# Global average pooling from [1, 7, 7, 2048] to [1, 1, 1, 2048]
+gap = ml.FixAveragePool2d(
+    current.shape,
+    [BATCH, 1, 1, current.shape[3]],
+    filter_size=(current.shape[1], current.shape[2]),
+    strides=(current.shape[1], current.shape[2]),
+    padding=0,
+)
+gap.inputs = [current]
+layers.append(gap)
+
+# Final FC: Dense input shape [N, d, in_dim]. d=1 matches GAP output memory.
+fc = fc_forward(gap, current.shape[3], N_CLASS)
+layers.append(fc)
+
+# Party 1 inputs one sample; Party 0 inputs all model parameters in layer order.
+stem_conv.X.input_from(1)
+
+graph = ml.Optimizer()
+graph.set_layers_with_inputs(layers)
+graph.forward(N=BATCH, model_from=0, keep_intermediate=False)
+
+logits = fc.Y[0][0]
+pred = argmax_index(logits, N_CLASS)
+print_ln('Predicted label: %s', pred.reveal())

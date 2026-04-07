@@ -7,6 +7,7 @@ import os
 from pathlib import Path
 import numpy as np
 import torch
+from torch import nn
 
 os.environ.setdefault("TORCHVISION_DISABLE_NMS_EXPORT", "1")
 from torchvision import models  # type: ignore
@@ -81,8 +82,60 @@ def export_fc2(npz_path: str, outdir: str, fractional_bits: int) -> None:
 
 def build_resnet50_for_load() -> torch.nn.Module:
     model = models.resnet50(weights=None)
-    model.conv1 = torch.nn.Conv2d(1, 64, kernel_size=7, stride=2, padding=3, bias=False)
-    model.fc = torch.nn.Linear(model.fc.in_features, 10)
+    old_conv1 = model.conv1
+    model.conv1 = nn.Conv2d(
+        1,
+        old_conv1.out_channels,
+        kernel_size=old_conv1.kernel_size,
+        stride=old_conv1.stride,
+        padding=old_conv1.padding,
+        dilation=old_conv1.dilation,
+        groups=old_conv1.groups,
+        bias=True,
+        padding_mode=old_conv1.padding_mode,
+    )
+    with torch.no_grad():
+        model.conv1.weight.copy_(old_conv1.weight.mean(dim=1, keepdim=True))
+        model.conv1.bias.zero_()
+
+    def replace_conv_with_bias(root: nn.Module, module_name: str, conv: nn.Conv2d) -> None:
+        new_conv = nn.Conv2d(
+            conv.in_channels,
+            conv.out_channels,
+            kernel_size=conv.kernel_size,
+            stride=conv.stride,
+            padding=conv.padding,
+            dilation=conv.dilation,
+            groups=conv.groups,
+            bias=True,
+            padding_mode=conv.padding_mode,
+        )
+        with torch.no_grad():
+            new_conv.weight.copy_(conv.weight)
+            if conv.bias is None:
+                new_conv.bias.zero_()
+            else:
+                new_conv.bias.copy_(conv.bias)
+
+        parent = root
+        parts = module_name.split(".")
+        for p in parts[:-1]:
+            parent = parent[int(p)] if p.isdigit() else getattr(parent, p)
+        leaf = parts[-1]
+        if leaf.isdigit():
+            parent[int(leaf)] = new_conv
+        else:
+            setattr(parent, leaf, new_conv)
+
+    # torchvision ResNet uses bias=False by default; after BN folding every conv
+    # should have a bias term, so convert all conv layers to bias=True before load.
+    for name, module in list(model.named_modules()):
+        if name == "":
+            continue
+        if isinstance(module, nn.Conv2d) and module.bias is None:
+            replace_conv_with_bias(model, name, module)
+
+    model.fc = nn.Linear(model.fc.in_features, 10, bias=True)
     return model
 
 
@@ -95,18 +148,61 @@ def export_resnet50(pth_path: str, outdir: str, fractional_bits: int) -> None:
     meta_path = Path(outdir) / 'meta.json'
     shapes = {}
     order = []
+    layouts = {}
+
+    def conv_weight_ohwi(conv: nn.Conv2d) -> np.ndarray:
+        # PyTorch conv layout is [O, I, H, W]. MP-SPDZ FixConv2d expects [O, H, W, I].
+        return conv.weight.detach().cpu().numpy().astype(np.float64).transpose(0, 2, 3, 1)
+
+    def conv_bias(conv: nn.Conv2d) -> np.ndarray:
+        if conv.bias is None:
+            return np.zeros(conv.out_channels, dtype=np.float64)
+        return conv.bias.detach().cpu().numpy().astype(np.float64)
+
+    def write_tensor(name: str, arr: np.ndarray, layout: str) -> None:
+        shapes[name] = list(arr.shape)
+        order.append(name)
+        layouts[name] = layout
+        write_sfix_real_values(f, arr, fractional_bits)
+
     with fixed_path.open('w') as f:
-        for name, tensor in model.state_dict().items():
-            if name.endswith('.weight') or name.endswith('.bias'):
-                arr = tensor.cpu().numpy().astype(np.float64)
-                shapes[name] = list(arr.shape)
-                order.append(name)
-                write_sfix_real_values(f, arr, fractional_bits)
+        write_tensor('conv1.weight', conv_weight_ohwi(model.conv1), 'OHWI')
+        write_tensor('conv1.bias', conv_bias(model.conv1), 'O')
+
+        layer_blocks = {
+            'layer1': 3,
+            'layer2': 4,
+            'layer3': 6,
+            'layer4': 3,
+        }
+        for layer_name, block_count in layer_blocks.items():
+            layer = getattr(model, layer_name)
+            for b in range(block_count):
+                block = layer[b]
+                for conv_name in ('conv1', 'conv2', 'conv3'):
+                    conv = getattr(block, conv_name)
+                    base = f'{layer_name}.{b}.{conv_name}'
+                    write_tensor(f'{base}.weight', conv_weight_ohwi(conv), 'OHWI')
+                    write_tensor(f'{base}.bias', conv_bias(conv), 'O')
+                if block.downsample is not None:
+                    ds_conv = block.downsample[0]
+                    ds_base = f'{layer_name}.{b}.downsample.0'
+                    write_tensor(f'{ds_base}.weight', conv_weight_ohwi(ds_conv), 'OHWI')
+                    write_tensor(f'{ds_base}.bias', conv_bias(ds_conv), 'O')
+
+        fc_weight = model.fc.weight.detach().cpu().numpy().astype(np.float64).transpose(1, 0)
+        fc_bias = model.fc.bias.detach().cpu().numpy().astype(np.float64)
+        # MP-SPDZ Dense expects W layout [in_dim, out_dim].
+        write_tensor('fc.weight', fc_weight, 'IO')
+        write_tensor('fc.bias', fc_bias, 'O')
+
     meta = {
         'fractional_bits': fractional_bits,
         'input_format': 'sfix_real_text',
         'order': order,
         'shapes': shapes,
+        'layouts': layouts,
+        'export_note': 'Conv weights are exported in OHWI; fc.weight is exported in IO.',
     }
     meta_path.write_text(json.dumps(meta, indent=2), encoding='utf-8')
     print(f'Wrote {fixed_path} and {meta_path}')

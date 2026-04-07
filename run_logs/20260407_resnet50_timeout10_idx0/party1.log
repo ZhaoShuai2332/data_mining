@@ -1,0 +1,6 @@
+=== First attempt (directory layout) ===
+Trying to run 64-bit computation
+Fatal error at resnet50_mnist_infer-0:3 (INPUTMIXED): not enough inputs in Player-Data/Input-P1-0
+
+=== Second attempt (flat-file layout) ===
+Trying to run 64-bit computation
