@@ -1,0 +1,14 @@
+=== First attempt (directory layout) ===
+Trying to run 64-bit computation
+Fatal error at fc2_mnist_infer-0:92 (INPUTMIXED): not enough inputs in Player-Data/Input-P1-0
+
+=== Second attempt (flat-file layout) ===
+Trying to run 64-bit computation
+The following benchmarks are including preprocessing (offline phase).
+Time = 7.72107 seconds 
+Data sent = 254.427 MB in ~409938 rounds (party 1 only; use '-v' for more details)
+Global data sent = 466.358 MB (all parties)
+This program might benefit from some protocol options.
+Consider adding the following at the beginning of your code:
+	program.use_trunc_pr = True
+	program.use_split(2)

@@ -6,12 +6,52 @@
 from Compiler.types import sfix, sint
 from Compiler.library import for_range
 
-# May need local version tuning depending on your MP-SPDZ release.
-sfix.set_precision(32, 32)
+# Keep this aligned with config/fc2_config.json fractional_bits=16.
+# MP-SPDZ API order is set_precision(fractional_bits, total_bits).
+sfix.set_precision(16, 32)
 
 n_in = 28 * 28
 n_hidden = 128
 n_out = 10
+
+def relu_scalar(v):
+    return v * (v > 0)
+
+
+def fc_forward(input_vec, weights, bias, in_dim, out_dim, apply_relu):
+    out = sfix.Array(out_dim)
+
+    @for_range(out_dim)
+    def _(j):
+        acc = sfix(0)
+
+        @for_range(in_dim)
+        def _(i):
+            # Parameters are exported from PyTorch in row-major [out_dim, in_dim].
+            # Flattened index is therefore j * in_dim + i.
+            acc.update(acc + input_vec[i] * weights[j * in_dim + i])
+
+        acc.update(acc + bias[j])
+        if apply_relu:
+            out[j] = relu_scalar(acc)
+        else:
+            out[j] = acc
+
+    return out
+
+
+def argmax_index(values, length):
+    best_val = values[0]
+    best_idx = sint(0)
+
+    @for_range(1, length)
+    def _(k):
+        better = values[k] > best_val
+        best_val.update(better.if_else(values[k], best_val))
+        best_idx.update(better.if_else(sint(k), best_idx))
+
+    return best_idx
+
 
 W1 = sfix.Array(n_in * n_hidden)
 W1.input_from(0)
@@ -25,35 +65,8 @@ b2.input_from(0)
 x = sfix.Array(n_in)
 x.input_from(1)
 
-z1 = sfix.Array(n_hidden)
+hidden = fc_forward(x, W1, b1, n_in, n_hidden, True)
+logits = fc_forward(hidden, W2, b2, n_hidden, n_out, False)
+pred = argmax_index(logits, n_out)
 
-@for_range(n_hidden)
-def _(j):
-    acc = sfix(0)
-    @for_range(n_in)
-    def _(i):
-        acc.update(acc + x[i] * W1[i * n_hidden + j])
-    acc.update(acc + b1[j])
-    z1[j] = acc * (acc > 0)
-
-logits = sfix.Array(n_out)
-
-@for_range(n_out)
-def _(k):
-    acc = sfix(0)
-    @for_range(n_hidden)
-    def _(j):
-        acc.update(acc + z1[j] * W2[j * n_out + k])
-    acc.update(acc + b2[k])
-    logits[k] = acc
-
-best_val = logits[0]
-best_idx = sint(0)
-
-@for_range(1, n_out)
-def _(k):
-    better = logits[k] > best_val
-    best_val.update(better.if_else(logits[k], best_val))
-    best_idx.update(better.if_else(sint(k), best_idx))
-
-print_ln('Predicted label: %s', best_idx.reveal())
+print_ln('Predicted label: %s', pred.reveal())

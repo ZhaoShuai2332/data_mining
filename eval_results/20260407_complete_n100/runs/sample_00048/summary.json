@@ -1,0 +1,19 @@
+{
+  "program": "fc2_mnist_infer",
+  "sample_index": 48,
+  "true_label": 4,
+  "predicted_label": 4,
+  "is_correct": true,
+  "fractional_bits": 16,
+  "elapsed_time_seconds": 7.87431,
+  "party0_sent_mb": 211.931,
+  "party1_sent_mb": 254.427,
+  "total_sent_mb": 466.358,
+  "rounds": 306236,
+  "triples": 109724,
+  "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00048",
+  "compile_log": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00048/compile.log",
+  "party0_log": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00048/party0.log",
+  "party1_log": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00048/party1.log",
+  "generated_at_utc": "2026-04-07T13:00:11.200531+00:00"
+}

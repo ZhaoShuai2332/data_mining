@@ -1,5 +1,6 @@
 {
   "fractional_bits": 16,
+  "input_format": "sfix_real_text",
   "param_order": [
     "W1",
     "b1",

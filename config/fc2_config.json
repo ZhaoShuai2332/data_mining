@@ -1,0 +1,6 @@
+{
+  "fractional_bits": 16,
+  "input_dim": 784,
+  "hidden_dim": 128,
+  "output_dim": 10
+}

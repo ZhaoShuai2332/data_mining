@@ -1,0 +1,17 @@
+section,metric,value
+single_run,run_dir,/Users/shuaizhao/workspace/mp_spdz_mnist_project/run_logs/20260407_204519
+single_run,predicted_label,7
+single_run,elapsed_time_seconds,7.90175
+single_run,party0_sent_mb,211.931
+single_run,party1_sent_mb,254.427
+single_run,total_sent_mb,466.358
+single_run,rounds,306236
+single_run,triples,109724
+batch_run,output_dir,/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100
+batch_run,sample_count,100
+batch_run,indices,"0-99"
+batch_run,accuracy,0.99
+batch_run,avg_time_seconds,6.9399672
+batch_run,avg_total_sent_mb,466.358
+errors,count,1
+errors,detail,"index=8,true=5,pred=6"

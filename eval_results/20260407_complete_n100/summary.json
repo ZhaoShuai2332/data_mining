@@ -1,0 +1,1011 @@
+{
+  "sample_count": 100,
+  "indices": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12,
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24,
+    25,
+    26,
+    27,
+    28,
+    29,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    36,
+    37,
+    38,
+    39,
+    40,
+    41,
+    42,
+    43,
+    44,
+    45,
+    46,
+    47,
+    48,
+    49,
+    50,
+    51,
+    52,
+    53,
+    54,
+    55,
+    56,
+    57,
+    58,
+    59,
+    60,
+    61,
+    62,
+    63,
+    64,
+    65,
+    66,
+    67,
+    68,
+    69,
+    70,
+    71,
+    72,
+    73,
+    74,
+    75,
+    76,
+    77,
+    78,
+    79,
+    80,
+    81,
+    82,
+    83,
+    84,
+    85,
+    86,
+    87,
+    88,
+    89,
+    90,
+    91,
+    92,
+    93,
+    94,
+    95,
+    96,
+    97,
+    98,
+    99
+  ],
+  "accuracy": 0.99,
+  "avg_time_seconds": 6.9399672,
+  "avg_total_sent_mb": 466.358,
+  "results_csv": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/results.csv",
+  "rows": [
+    {
+      "index": 0,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.66536,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00000"
+    },
+    {
+      "index": 1,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.7755,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00001"
+    },
+    {
+      "index": 2,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.70563,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00002"
+    },
+    {
+      "index": 3,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.64567,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00003"
+    },
+    {
+      "index": 4,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.60962,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00004"
+    },
+    {
+      "index": 5,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.6355,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00005"
+    },
+    {
+      "index": 6,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.74946,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00006"
+    },
+    {
+      "index": 7,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.74078,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00007"
+    },
+    {
+      "index": 8,
+      "true_label": 5,
+      "predicted_label": 6,
+      "is_correct": false,
+      "elapsed_time_seconds": 7.65614,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00008"
+    },
+    {
+      "index": 9,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.62479,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00009"
+    },
+    {
+      "index": 10,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.65324,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00010"
+    },
+    {
+      "index": 11,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.85907,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00011"
+    },
+    {
+      "index": 12,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.63876,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00012"
+    },
+    {
+      "index": 13,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.69047,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00013"
+    },
+    {
+      "index": 14,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.67856,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00014"
+    },
+    {
+      "index": 15,
+      "true_label": 5,
+      "predicted_label": 5,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.66577,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00015"
+    },
+    {
+      "index": 16,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.9446,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00016"
+    },
+    {
+      "index": 17,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.63886,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00017"
+    },
+    {
+      "index": 18,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.65182,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00018"
+    },
+    {
+      "index": 19,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.92002,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00019"
+    },
+    {
+      "index": 20,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.60393,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00020"
+    },
+    {
+      "index": 21,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.58038,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00021"
+    },
+    {
+      "index": 22,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.75283,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00022"
+    },
+    {
+      "index": 23,
+      "true_label": 5,
+      "predicted_label": 5,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.8448,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00023"
+    },
+    {
+      "index": 24,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.79822,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00024"
+    },
+    {
+      "index": 25,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.81775,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00025"
+    },
+    {
+      "index": 26,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.80225,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00026"
+    },
+    {
+      "index": 27,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.7881,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00027"
+    },
+    {
+      "index": 28,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.84937,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00028"
+    },
+    {
+      "index": 29,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.79765,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00029"
+    },
+    {
+      "index": 30,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.76656,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00030"
+    },
+    {
+      "index": 31,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.81752,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00031"
+    },
+    {
+      "index": 32,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.88649,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00032"
+    },
+    {
+      "index": 33,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.82256,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00033"
+    },
+    {
+      "index": 34,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.72115,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00034"
+    },
+    {
+      "index": 35,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.77881,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00035"
+    },
+    {
+      "index": 36,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.82344,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00036"
+    },
+    {
+      "index": 37,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.74873,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00037"
+    },
+    {
+      "index": 38,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.76406,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00038"
+    },
+    {
+      "index": 39,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.82631,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00039"
+    },
+    {
+      "index": 40,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.8558,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00040"
+    },
+    {
+      "index": 41,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.73244,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00041"
+    },
+    {
+      "index": 42,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.81502,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00042"
+    },
+    {
+      "index": 43,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.8536,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00043"
+    },
+    {
+      "index": 44,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.89376,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00044"
+    },
+    {
+      "index": 45,
+      "true_label": 5,
+      "predicted_label": 5,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.77051,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00045"
+    },
+    {
+      "index": 46,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.81471,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00046"
+    },
+    {
+      "index": 47,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.83549,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00047"
+    },
+    {
+      "index": 48,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.87431,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00048"
+    },
+    {
+      "index": 49,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.81763,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00049"
+    },
+    {
+      "index": 50,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.80386,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00050"
+    },
+    {
+      "index": 51,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 8.65006,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00051"
+    },
+    {
+      "index": 52,
+      "true_label": 5,
+      "predicted_label": 5,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.88915,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00052"
+    },
+    {
+      "index": 53,
+      "true_label": 5,
+      "predicted_label": 5,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.80802,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00053"
+    },
+    {
+      "index": 54,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.64876,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00054"
+    },
+    {
+      "index": 55,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 7.74298,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00055"
+    },
+    {
+      "index": 56,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 6.51782,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00056"
+    },
+    {
+      "index": 57,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.85413,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00057"
+    },
+    {
+      "index": 58,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.85299,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00058"
+    },
+    {
+      "index": 59,
+      "true_label": 5,
+      "predicted_label": 5,
+      "is_correct": true,
+      "elapsed_time_seconds": 6.41966,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00059"
+    },
+    {
+      "index": 60,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 6.00799,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00060"
+    },
+    {
+      "index": 61,
+      "true_label": 8,
+      "predicted_label": 8,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.82812,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00061"
+    },
+    {
+      "index": 62,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.90248,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00062"
+    },
+    {
+      "index": 63,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.90256,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00063"
+    },
+    {
+      "index": 64,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.89615,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00064"
+    },
+    {
+      "index": 65,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.84209,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00065"
+    },
+    {
+      "index": 66,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.87815,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00066"
+    },
+    {
+      "index": 67,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.85771,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00067"
+    },
+    {
+      "index": 68,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.88162,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00068"
+    },
+    {
+      "index": 69,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.98168,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00069"
+    },
+    {
+      "index": 70,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.86196,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00070"
+    },
+    {
+      "index": 71,
+      "true_label": 0,
+      "predicted_label": 0,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.81616,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00071"
+    },
+    {
+      "index": 72,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.97708,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00072"
+    },
+    {
+      "index": 73,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.82688,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00073"
+    },
+    {
+      "index": 74,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.84289,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00074"
+    },
+    {
+      "index": 75,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.84627,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00075"
+    },
+    {
+      "index": 76,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.78964,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00076"
+    },
+    {
+      "index": 77,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.89801,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00077"
+    },
+    {
+      "index": 78,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.79371,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00078"
+    },
+    {
+      "index": 79,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.72085,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00079"
+    },
+    {
+      "index": 80,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.78033,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00080"
+    },
+    {
+      "index": 81,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.88541,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00081"
+    },
+    {
+      "index": 82,
+      "true_label": 2,
+      "predicted_label": 2,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.80429,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00082"
+    },
+    {
+      "index": 83,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.78583,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00083"
+    },
+    {
+      "index": 84,
+      "true_label": 8,
+      "predicted_label": 8,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.89669,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00084"
+    },
+    {
+      "index": 85,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.86543,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00085"
+    },
+    {
+      "index": 86,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.80055,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00086"
+    },
+    {
+      "index": 87,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.78713,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00087"
+    },
+    {
+      "index": 88,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.81903,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00088"
+    },
+    {
+      "index": 89,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.83636,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00089"
+    },
+    {
+      "index": 90,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.7965,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00090"
+    },
+    {
+      "index": 91,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.77931,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00091"
+    },
+    {
+      "index": 92,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.86814,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00092"
+    },
+    {
+      "index": 93,
+      "true_label": 3,
+      "predicted_label": 3,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.84579,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00093"
+    },
+    {
+      "index": 94,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.8031,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00094"
+    },
+    {
+      "index": 95,
+      "true_label": 4,
+      "predicted_label": 4,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.82121,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00095"
+    },
+    {
+      "index": 96,
+      "true_label": 1,
+      "predicted_label": 1,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.80229,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00096"
+    },
+    {
+      "index": 97,
+      "true_label": 7,
+      "predicted_label": 7,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.8461,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00097"
+    },
+    {
+      "index": 98,
+      "true_label": 6,
+      "predicted_label": 6,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.79758,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00098"
+    },
+    {
+      "index": 99,
+      "true_label": 9,
+      "predicted_label": 9,
+      "is_correct": true,
+      "elapsed_time_seconds": 5.83242,
+      "total_sent_mb": 466.358,
+      "run_dir": "/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00099"
+    }
+  ]
+}

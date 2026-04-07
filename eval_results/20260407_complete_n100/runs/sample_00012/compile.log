@@ -1,0 +1,18 @@
+Default bit length for compilation: 63
+Default security parameter for compilation: 40
+Compiling file Programs/Source/fc2_mnist_infer.mpc
+WARNING: Order of memory instructions not preserved, errors possible
+WARNING: Probabilistic truncation leaks some information, see https://eprint.iacr.org/2024/1127 for discussion. Use 'sfix.round_nearest = True' to deactivate this for fixed-point operations.
+Writing to Programs/Bytecode/fc2_mnist_infer-TruncPr(1)_48_16-1.bc
+Writing to Programs/Bytecode/fc2_mnist_infer-LTZ(1)_33-3.bc
+Writing to Programs/Schedules/fc2_mnist_infer.sch
+Writing to Programs/Bytecode/fc2_mnist_infer-0.bc
+Hash: 726940019666972e52b9a9d5ebfaa9fb275290caa3eb53827e5f7db25f5479d6
+Program requires at most:
+      101770 integer inputs from player 0
+         784 integer inputs from player 1
+      101770 integer opens
+     4984489 integer bits
+      109724 integer triples
+      109724 integer simple multiplications
+      306236 virtual machine rounds

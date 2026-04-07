@@ -1,0 +1,6 @@
+=== FC2 MPC Run ===
+run_dir=/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/runs/sample_00032
+model_dir=/Users/shuaizhao/workspace/mp_spdz_mnist_project/mp_spdz_inputs/fc2
+input_file=/Users/shuaizhao/workspace/mp_spdz_mnist_project/eval_results/20260407_complete_n100/inputs/input_32.txt
+port=15000
+fractional_bits=16
